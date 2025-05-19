@@ -1,6 +1,20 @@
-import * as secp256k1 from '@noble/secp256k1';
+import crypto from 'crypto';
+import elliptic from 'elliptic';
 
-const privateKey = '85c9ed58d8dd77a6257925bf9c0d89222d852f5119f9578134d66a0b10561727';
-const publicKey = secp256k1.getPublicKey(privateKey, false); // uncompressed (130 bytes)
+// Request a 32 byte key
+const size = parseInt(process.argv.slice(2)[0]) || 32;
+const randomString = crypto.randomBytes(size).toString("hex");
+const key = randomString;
 
-console.log('✅ publicKeyHex:', Buffer.from(publicKey).toString('hex'));
+console.log(`Key (hex): ${key}`)  // ee48d32e6c724c4d
+
+// Calculate the `secp256k1` curve and build the public key
+const ec = new elliptic.ec('secp256k1');
+const prv = ec.keyFromPrivate(key, 'hex');
+const pub = prv.getPublic();
+console.log(`Public (hex): ${prv.getPublic('hex')}`)
+console.log(`x (hex): ${pub.x.toBuffer().toString('hex')}`)
+console.log(`y (hex): ${pub.y.toBuffer().toString('hex')}`)
+console.log(`x (base64): ${pub.x.toBuffer().toString('base64')}`)
+console.log(`y (base64): ${pub.y.toBuffer().toString('base64')}`)
+console.log(`-- kty: EC, crv: secp256k1`)
