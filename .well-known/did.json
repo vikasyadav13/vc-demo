@@ -1,15 +1,15 @@
 {
   "@context": "https://w3id.org/did/v1",
-  "id": "did:web:vikas-ssi.github.io:vc-demo",
+  "id": "did:web:vikasyadav13.github.io:vc-demo",
   "verificationMethod": [
     {
-      "id": "did:web:vikas-ssi.github.io:vc-demo#owner",
+      "id": "did:web:vikasyadav13.github.io:vc-demo#owner",
       "type": "EcdsaSecp256k1VerificationKey2019",
-      "controller": "did:web:vikas-ssi.github.io:vc-demo",
+      "controller": "did:web:vikasyadav13.github.io:vc-demo",
       "publicKeyHex": "0469aca39453a3c8f808b62ebd87e6f4e3c77cbf54224af4e433aeb555c5086e6c59cd7e746215e7d92f0333800d827cbf9cbfa272dbb639f6110371489840307b"
     }
   ],
   "assertionMethod": [
-    "did:web:vikas-ssi.github.io:vc-demo#owner"
+    "did:web:vikasyadav13.github.io:vc-demo#owner"
   ]
 }
